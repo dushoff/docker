@@ -11,6 +11,17 @@ vim_session:
 
 ######################################################################
 
+## test.image: test.file
+%.image: %.file
+	docker build -f $< -t $* .
+	touch $@
+
+## test.open: test.file
+%.open: %.image
+	docker run --rm -ti $*
+
+######################################################################
+
 ### Makestuff
 
 Sources += Makefile
