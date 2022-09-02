@@ -11,6 +11,9 @@ vim_session:
 
 ######################################################################
 
+Sources += $(wildcard *.file)
+Ignore += *.image
+
 ## test.image: test.file
 %.image: %.file
 	docker build -f $< -t $* .
